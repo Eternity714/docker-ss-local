@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+  ss-local:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "1080:1080/tcp"
+      - "1080:1080/udp"
+    environment:
+      - METHOD=aes-256-cfb
+      - PASSWORD_SECRET=ss_password_secret
+      - SERVER_ADDR_SECRET=ss_server_addr_secret
+    restart: always
+
+secrets:
+  ss_password_secret:
+  ss_server_addr_secret:
